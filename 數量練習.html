@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/練習區/數量練習.css">
+
+    <title>商品頁</title>
+</head>
+<style>
+    
+   
+</style>
+<body>  
+
+
+    <div class="product">
+        <div class="background"></div>
+    </div>
+    <div class="product-img">
+        <img src="./img/product.png" alt="">
+    </div>
+    <div class="qty-wrap">
+        <button type="button" class="minus">-</button>
+        <div class="qty">1</div>
+        <button type="button" class="add mr20">+</button>
+        <button class="order-btn" >Add To Cart</button>
+    </div>
+    
+
+
+<script>
+    const qty = document.querySelector('.qty')
+    const add = document.querySelector('.add')
+    const minus = document.querySelector('.minus')
+
+    let value = parseInt(qty.innerText); 
+    const max = 10
+
+
+    add.addEventListener("click",()=>{
+        if(value<10){
+            value+=1
+            qty.innerText = value;
+        }
+    })
+    minus.addEventListener("click",()=>{
+        if(value>1){
+            value-=1
+            qty.innerText = value;
+        }else{
+            alert('最少購買數量為1')
+        }
+    })
+
+
+</script>
+</body>
+</html>
