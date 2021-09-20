@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" integrity="sha512-1ycn6IcaQQ40/MKBW2W4Rhis/DbILU74C1vSrLJxCq57o941Ym01SwNsOMqvEBFlcgUa6xLiPY/NS5R+E6ztJQ==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>To Do List</title>
+</head>
+<style>
+    *{
+        padding: 0;
+        margin: 0;
+        box-sizing: border-box;
+        list-style: none;
+    }
+    body {
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        background: #f3f5fc;
+    }
+    .wrap{
+        width: 400px;
+        background-color: rgb(255, 255, 255);
+        border: 1px solid #e7ecfb;
+        border-radius: 10px;
+        padding: 30px;
+        box-shadow: 0 0 30px rgba(211, 220, 248, .3);
+        text-align: center;
+    }
+    .title{
+        text-align: center;
+    }
+    .todo-wrap{
+        display: flex;
+        width: 340px;
+        margin: 15px auto;
+        border: 2px solid rgba(211, 220, 248);
+        padding: 5px;
+        border-radius: 50px;
+    }
+    .todo-wrap input{
+        padding: 5px;
+        border: none;
+        background-color: transparent;
+        width: 350px;
+        padding-left: 20px;
+
+    }
+    .todo-wrap button{
+        padding: 5px ;
+        width: 50px;
+        border: none;
+        background-color: transparent;
+        cursor: pointer;
+        /* opacity: 0.6;
+        pointer-events: none; */
+    }
+    /* .todo-wrap button.active{
+        opacity: 1;
+        pointer-events: auto;
+    } */
+    input:focus{
+        outline: none;
+    }
+        
+    .delete{
+        text-decoration: line-through;
+    }
+    .todoList li{
+        height: 30px;
+        line-height: 30px;
+        position: relative;
+        background-color: lightgoldenrodyellow;
+        border-radius: 5px;
+        margin-bottom: 10px;
+        cursor: default;
+        overflow: hidden;
+    }
+    .todoList li:hover span{
+        right: 0;
+    }
+    .todoList li span{
+        position: absolute;
+        right: 0px;
+        right: -45px;
+        cursor: pointer;
+        color: white;
+        background-color: rgb(216, 110, 110);
+        width: 45px;
+        border-radius: 0px 5px 5px 0px;
+        transition: .3s;
+    }
+    .footer{
+        margin-top: 20px;
+    }
+    .footer button{
+        padding: 8px 15px ;
+        width: 150px;
+        border: none;
+        background-color: rgba(135, 206, 250, 0.507) ;
+        cursor: pointer;
+        border-radius: 50px;
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .todoList{
+        max-height: 250px;
+        overflow-y: auto;
+    }
+    .complete{
+        text-decoration: line-through;
+        
+    }
+    
+</style>
+<body>
+    <div class="wrap">
+        <div class="title">
+            <h1>My List</h1>
+        </div>
+
+        <div class="todo-wrap">
+            <input type="text" placeholder="please add the to do">
+            <button type="button" class=""><i class="fas fa-plus"></i></button>
+        </div>
+
+        <div class="todoList">
+            <!-- <li class="task">
+                buy a new Iphone 
+                <span class="delete"><i class="fas fa-trash"></i></span>
+            </li> -->
+        </div>
+
+    </div>
+<script>
+    const input = document.querySelector('.todo-wrap input')
+    const addBtn = document.querySelector('.todo-wrap button')
+    const todoList = document.querySelector('.todoList')
+    
+    
+    addBtn.onclick = ()=>{
+        if(input.value.length ==0){
+            alert(' please check the task')
+        }else{
+            todoList.innerHTML += `
+            <li class="task">${input.value}<span class="delete" ><i class="fas fa-trash"></i></span></li>`;
+
+            const current_task = document.querySelectorAll('.delete')
+
+            for (let i=0; i<current_task.length; i++){
+                current_task[i].onclick = function(){
+                    // 他的父元素
+                    console.log(this.parentNode)
+                    this.parentNode.remove();
+                }
+            }
+            const task = document.querySelectorAll('.task')
+            for (let i=0; i<task.length; i++){
+                task[i].onclick=function(){
+                    console.log(this)
+                    // 有的話就取消class name, 沒有的話就加上去
+                    this.classList.toggle('complete')
+                }
+            }
+        }
+        input.value='';
+    };
+    
+    
+    
+</script>
+</body>
+</html>
