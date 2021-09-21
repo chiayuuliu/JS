@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>nav scrollTop</title>
+</head>
+<style>
+    *{
+        margin: 0;
+    }
+    body{
+        height: 500vh;
+    }
+    
+    nav{
+        height: 60px;
+        background-color: lightsalmon;
+        text-align: center;
+        line-height: 60px;
+        position: static;
+        transition: .5s;
+    }
+    .fixed{
+        position: fixed;
+        left: 0;
+        right: 0;
+    }
+    .hider{
+        transform: translateY(-60px);
+    }
+    
+</style>
+<body>
+    <nav class="fixed" >Hello</nav>
+<script>
+    const nav = document.querySelector('nav')
+    console.log(window.scrollY)
+
+    let lastScroll = 0;
+    window.addEventListener('scroll',function(){
+        // console.log(window.scrollY)
+        let now = window.scrollY
+        if(now>lastScroll){
+            nav.classList.add('hider')
+        }else{
+            nav.classList.remove('hider')
+        }
+        // 把最新的scroll位置設定給now當作比較值
+        lastScroll = now
+    })
+
+</script>
+</body>
+</html>
