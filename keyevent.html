@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="text" name="" id="">
+    <ul class="todolist">
+        <!-- <li></li> -->
+    </ul>
+<script>
+    const input = document.querySelector('input')
+    const todolist = document.querySelector('.todolist')
+
+    input.addEventListener('keydown', ()=>{
+
+        // 當input 有直且按到enter
+        if(input.value.length!==0 && event.keyCode==13){
+            todolist.innerHTML+= `<li>${input.value}</li>`
+            // 把輸入值設定為空字串
+            input.value=""
+        }
+    })
+
+</script>
+</body>
+</html>
