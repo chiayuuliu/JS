@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>驗證碼練習</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background-color: #4db2ec;
+}
+.wrapper{
+    width: 485px;
+    background-color: #fff;
+    border-radius: 10px;
+    padding: 22px 15px 40px;
+}
+.wrapper header{
+    color: #4db2ec;
+    font-size: 35px;
+    font-weight: 500;
+    text-align:center;
+}
+.wrapper .Captcha-area{
+    display: flex;
+    height: 65px;
+    margin: 30px 0px 20px;
+    align-items: center;
+    justify-content: space-between;
+}
+.Captcha-area  .captcha-img{
+    height: 100%;
+    width: 345px;
+    background-color: #fff;
+    border-radius: 5px;
+    position: relative;
+    /* 不讓使用者反白 */
+    user-select: none;
+}
+
+.captcha-img img{
+    height: 100%;
+    width: 100%;
+    opacity: 1;
+    object-fit: cover;
+    border-radius: 5px;
+}
+.captcha-img span{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 100%;
+    font-size: 35px;
+    text-align: center;
+    letter-spacing: 3px;
+    text-shadow: 0 0 2px;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    text-shadow: 0 0 2px #bdbdbd;
+}
+.wrapper button{
+    border: none;
+    outline: none;
+    color: #fff;
+    cursor: pointer;
+    background-color: #4db2ec;
+    border-radius: 5px;
+}
+.reload-btn{
+    width: 75px;
+    height: 100%;
+    font-size: 25px;
+}
+.reload-btn i{
+    transition: transform 0.3s ease;
+}
+
+.reload-btn:hover i{
+    transform: rotate(30deg);
+}
+
+.wrapper .input-area{
+    height: 60px;
+    width: 100%;
+    position: relative;
+}
+.input-area input{
+    height: 100%;
+    width: 100%;
+    outline: none;
+    font-size: 20px;
+    padding-left: 20px;
+    border-radius: 5px;
+    border: 1px solid #cbcbcb;
+}
+.input-area input::placeholder{
+    transition: .3s;
+    color: #727272;
+}
+.input-area input:focus{
+    border: 2px solid #4db2ec;
+    padding-left: 10px;
+}
+.check-btn{
+    position: absolute;
+    right: 7px;
+    top: 50%;
+    /* 位移自己高度的一半 */
+    transform: translateY(-50%);
+    height: 45px;
+    font-size: 20px;
+    padding: 0 20px;
+    opacity: 0;
+    pointer-events: none;
+}
+/* 如果input 元素中輸入的值是合法，才套用樣式 */
+.input-area input:valid + .check-btn{
+    opacity: 1;
+    pointer-events: auto;
+}
+/* 狀態語 */
+.status{
+    display: none;
+    font-size: 18px;
+    text-align: center;
+    margin: 20px 0 -5px 0;
+    letter-spacing: 5px;
+}
+
+</style>
+<body>
+    <div class="wrapper">
+        <header>Captcha in JS</header>
+        <div class="Captcha-area">
+            <div class="captcha-img">
+                <img src="./img/驗證碼背景.png" alt="">
+                <span class="captacha"></span>
+            </div>
+            <button class="reload-btn"><i class="fas fa-redo"></i></button>
+        </div>
+        <form action="#" class="input-area">
+            <input type="text" placeholder="請輸入驗證碼" required>
+            <button class="check-btn">Check</button>
+        </form>
+        <div class="status"></div>
+    </div>
+<script src="/Captcha.js"></script>
+</body>
+</html>
