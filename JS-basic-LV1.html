@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="info"></div>
+<script>
+    const info = document.querySelector('.info')
+    // JS 基礎練習題
+    // 請寫出一個叫做 starReturn 的 function 並且接受一個參數 n，能回傳 n 個 * 
+    // 用repeat() 寫法
+    const starReturn = function (n) {
+        return ('* ').repeat(n)
+    }
+    console.log(starReturn(5))
+
+    // 用字串寫法
+    function starReturn2(n) {
+        let star = '';
+        for (let i=0;i<n;i++){
+            star +='* '
+        }
+        console.log(star)
+    }
+    starReturn2(4)
+
+    //請寫一個叫做 isUpperCase 的 functuon，並且接收一個字串，回傳這個字串的第一個字母是否為大寫
+
+    // 以下先測試用
+    // const name = 'doris'
+    // console.log(name.toUpperCase()==name)
+
+    function isUpperCase(name) {
+        // 判斷第一個字是否為大寫
+        console.log(name[0])
+        if(name[0].toUpperCase()==name[0]){
+            return true
+        }else{
+            return false
+        }
+        // 判斷給的參數是否為大寫
+        // if(name.toUpperCase()==name){
+        //     return true
+        // }else{
+        //     return false
+        // }
+        
+    }
+    console.log(isUpperCase('Doris'))
+
+    // 請寫一個 function position，接收一個字串並回傳這個字串裡面的第一個大寫字母跟它的 index，若沒有則回傳 -1
+    //***未解答
+
+
+    //請寫出一個函式 findSmallCount，接收一個陣列跟一個數字 n，回傳有多少個數小於 n
+
+    function find(array,n) {
+        let i =0
+        array.forEach(el => {
+            if(el<n){
+                //加總小於n的總和
+                i +=el
+            }
+        });
+        return i
+    }
+    console.log(find([1,2,3], 3))
+    console.log(find([1,2,3,4], 1))
+
+    // 請寫一個函式 findAllSmall，接收一個陣列跟一個數字 n，回傳一個裡面有所有小於 n 的數的陣列（需按照原陣列順序）
+
+    function findSmall(array, n) {
+        let newAr=[]
+        array.forEach(el=>{
+            if(el<n){
+                newAr.push(el)
+            }
+        })
+        return newAr
+    }
+    console.log(findSmall([1,2,3], 10))
+
+    // 10. 請寫一個 function sum，接收一個陣列並回傳陣列中數字的總和
+    // 寫法一
+    function sum(array) {
+        let n = 0
+        array.forEach(el=>{
+            n +=el
+            console.log(el,n)
+        })
+        return n
+    }
+
+    // 寫法二
+    function sum(array) {
+        let total = 0;
+        for (let i =0; i<array.length; i++){
+            total += array[i]
+        }
+        return total
+    }
+    console.log(sum([1,2,-3]))
+
+    // LV-2 練習
+    // 1. 請寫出一個 function stars，接收一個參數 n，並且按照規律印出相對應的圖案
+    function star(n) {
+        let str = ''
+        for (let i=1; i<n; n++){
+            console.log('ok')
+            str +='* '
+        }
+        console.log(str)
+    }
+    star(3)
+</script>
+</body>
+</html>
