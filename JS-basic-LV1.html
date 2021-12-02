@@ -201,6 +201,67 @@
         info.innerHTML=msg
     }
     table9()
+
+    // 費式數列的定義為：第 n 個數等於前兩個數的總和，因此這個數列會長的像這樣：1 1 2 3 5 8 13 21 …
+    // fib(0) = 0
+    // fib(1) = 1
+    // for n >=2, fib(n) = fib(n-1) + fib(n-2)
+    // 現在，請你寫出一個 fib 的函式，回傳位在第 n 個位置的數字
+    // fib(1) 預期回傳值：1
+    // fib(2) 預期回傳值：1
+    // fib(8) 預期回傳值：21
+
+    function fib(n) {
+        let arr=[1,1]
+        // n 表示第幾位數
+        if(n<=0){return 0}
+        if(n>0 && n<=2){ return 1}
+        if(n>2){
+            // 用i來做迴圈順序，n表示要回傳的位置值
+            for (let i=2;i<n;i++){
+                arr.push(arr[i-1]+arr[i-2])
+            }
+        }
+        return(arr[n-1])
+    }
+    console.log(fib(8))
+
+    // 請寫出一個函式 reverse，接收一個字串，並且回傳反轉過後的字串。（禁止使用內建函式 reverse）
+    // reverse("abcd") 預期回傳值：dcba
+    // reverse("12345aa") 預期回傳值：aa54321
+
+    function reverse(str) {
+        // 這樣也可以取出字
+        //console.log(str[2])
+        newStr=str.split('')
+        let newStr2=''
+        for (i=newStr.length-1;i>=0;i--){
+            newStr2 +=newStr[i]
+        }
+        return newStr2
+    }
+    console.log(reverse('12345aa'))
+
+    //請寫一個函式 swap，接收一個字串，並且回傳大小寫互換後的字串
+    // swap("Peter") 預期回傳值：pETER
+    // swap("AbCdE") 預期回傳值：aBcDe
+
+    function swap(str) {
+        // 先把字串切割
+        newStr = str.split('')
+        // 設定一個陣列去存放轉換後的字串
+        let reStr=[]
+        newStr.forEach(el=>{
+            if(el.toUpperCase()==el){
+                reStr.push(el.toLowerCase())
+            }else{
+                reStr.push(el.toUpperCase())
+            }
+        })
+        // 最後將陣列裡面的字串串再一起
+        return reStr.join('')
+    }
+    console.log(swap('Peter'))
 </script>
 </body>
 </html>
