@@ -40,7 +40,8 @@
 
     let lastScroll = 0;
     window.addEventListener('scroll',function(){
-        // console.log(window.scrollY)
+        console.log(window.scrollY)
+        // 記錄現在的捲軸高度
         let now = window.scrollY
         if(now>lastScroll){
             nav.classList.add('hider')
