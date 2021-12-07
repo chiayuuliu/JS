@@ -26,7 +26,7 @@ function getCaptcha(){
         captcha.innerText +=` ${randomChar}`
     }
 }
-
+getCaptcha()
 //點擊按鈕的時候，先清空再重新設定驗證碼
 reloadBtn.addEventListener('click',()=>{
     captcha.innerText=''
