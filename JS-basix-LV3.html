@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //請寫一個 function sort，接收一個陣列並且回傳由小到大排序後的陣列。（禁止使用內建函式 sort）
+    // sort([ 6, 8, 3, 2]) 預期回傳值：[2, 3, 6, 8]
+    // sort([ 1, 2, 7 ,5]) 預期回傳值：[1, 2, 5, 7]
+    function sort(array) {
+        let newAr=[]
+        for(let i =0;i<=array.length;i++){
+            //先找到最小的數值
+            let Minnum = Math.min(...array)
+            let deleteIndex = array.findIndex(function (el) {
+                return el === Minnum
+            })
+            // 找到最小值先加到新陣列後再從舊陣列移除
+            newAr.push(Minnum)
+            array.splice(deleteIndex,1)
+        }
+        // 如果最後陣列只剩一個，直接push進去新陣列當最後一個值
+        if(array.length=1){
+            newAr.push(array[0])
+        }
+        return newAr
+    }
+    console.log(sort([ 1, 2, 7 ,5]))
+</script>
+</body>
+</html>
