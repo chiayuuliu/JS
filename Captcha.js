@@ -15,6 +15,8 @@ let allCharacters = ['A', 'B', 'C', 'D', 'E', 'F', 'G', 'H', 'I', 'J', 'K', 'L',
                      'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's',
                      't', 'u', 'v', 'w', 'x', 'y', 'z', 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 
+//純數字驗證碼
+// let allCharacters = [ 0, 1, 2, 3, 4, 5, 6, 7, 8, 9];
 // 設定驗證碼             
 function getCaptcha(){
     // 隨機取6個字
@@ -26,13 +28,15 @@ function getCaptcha(){
         captcha.innerText +=` ${randomChar}`
     }
 }
-getCaptcha()
 //點擊按鈕的時候，先清空再重新設定驗證碼
 reloadBtn.addEventListener('click',()=>{
+    //按重整時把提示字跟input的值清空
+    input.value=''
     captcha.innerText=''
+    statusTxt.innerText=''
     getCaptcha();
 })
-// getCaptcha();
+getCaptcha();
 
 checkBtn.addEventListener('click', e=>{
     // 阻止預設行為
@@ -54,7 +58,7 @@ checkBtn.addEventListener('click', e=>{
             captcha.innerText=''
             // 都清空之後再隨機設定驗證碼
             getCaptcha();
-        },4000)
+        },2500)
     }else{
         statusTxt.innerText='驗證碼錯誤，請再試一次'
         statusTxt.style.color="red"
