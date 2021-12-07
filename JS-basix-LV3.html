@@ -30,6 +30,24 @@
         return newAr
     }
     console.log(sort([ 1, 2, 7 ,5]))
+
+    // 寫法二：先把初始的陣列長度設定給一個變數儲存
+    function sort2(array) {
+        let newAr=[]
+        // 儲存初始陣列長度
+        let len = array.length
+        for(let i = 0 ; i< len; i++){
+            let Minnum = Math.min(...array)
+            let deleteIndex = array.findIndex(function (el) {
+                return el === Minnum
+            })
+            newAr.push(Minnum)
+            array.splice(deleteIndex,1)
+        }
+        console.log(newAr)
+    }
+    sort2([ 1, 2, 7 ,5])
+    
 </script>
 </body>
 </html>
