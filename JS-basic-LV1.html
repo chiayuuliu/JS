@@ -262,6 +262,51 @@
         return reStr.join('')
     }
     console.log(swap('Peter'))
+
+    //請寫出一個函式 findMin，接收一個陣列並回傳陣列中的最小值。（禁止使用內建函式 sort）
+    // findMin([1, 2, 5, 6, 99, 4, 5]) 預期回傳值：1
+    // findMin([1, 6, 0, 33, 44, 88, -10]) 預期回傳值：-10
+    function findMin(array) {
+        //  先假設第一位就是最小的，如果有比他更小的再替換
+        let newVal=array[0]
+        for(i=0;i<array.length;i++){
+            if(newVal>array[i]){
+                console.log(array[i])
+                // 找到比自己小的值，做替換
+                newVal=array[i]
+            }
+        }
+        console.log('final',newVal)
+    }
+    findMin([5,2,3,4])
+
+    // 請寫一個 function findNthMin，接收一個陣列以及一個數字 n，找出第 n 小的數字。（禁止使用內建函式 sort）
+    // findNthMin([1, 2, 3, 4, 5], 1) 預期回傳值：1
+    // findNthMin([1, 3, 5, 7, 9], 3) 預期回傳值：5
+    // findNthMin([1, 1, 1, 1, 1], 2) 預期回傳值：1
+    
+    // let array = [1, 3, 5, 7, 9]
+    // var z = Math.min(...array);
+    // console.log(z)
+
+    function findNthMin(array, n) {
+        for(let i=0; i<n-1; i++){
+            // 找出最小值
+            let Minnum = Math.min(...array)
+            // 找出最小值所在的索引位置，並刪除
+            // findIndex()裡面放函式
+            let deleteIndex = array.findIndex(function (el) {
+                return el === Minnum
+            })
+            array.splice(deleteIndex,1)
+        }
+        return Math.min(...array)
+    }
+    console.log(findNthMin([10, 3, 5, 7, 9],3))
+
+    let newArray=[ 12,23,34,45]
+    // indexOf()裡面放值
+    console.log(newArray.indexOf(12))
 </script>
 </body>
 </html>
