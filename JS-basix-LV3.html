@@ -7,7 +7,11 @@
     <title>Document</title>
 </head>
 <body>
+    <span class="info"></span>
+
 <script>
+    info=document.querySelector('.info')
+
     //請寫一個 function sort，接收一個陣列並且回傳由小到大排序後的陣列。（禁止使用內建函式 sort）
     // sort([ 6, 8, 3, 2]) 預期回傳值：[2, 3, 6, 8]
     // sort([ 1, 2, 7 ,5]) 預期回傳值：[1, 2, 5, 7]
@@ -47,7 +51,91 @@
         console.log(newAr)
     }
     sort2([ 1, 2, 7 ,5])
+
+    // 請寫出一個 function flatten，接收一個多維陣列並回傳「壓平」後的陣列。
+    // flatten([1, 2, 3]) 預期回傳值：[1, 2, 3]
+    // flatten([1, 2, [1, 2], [1, 3], 6]) 預期回傳值：[1, 2, 1, 2, 1, 3, 6]
+    // flatten([1, [2, [3, [4]], 5], 6]) 預期回傳值：[1, 2, 3, 4, 5, 6]
+    let temArray=[]
     
+    function flatten(array) {
+        // Array.isArray()判斷()裡面的值是否為一個陣列
+        // console.log(Array.isArray(array))
+        for (let i = 0; i< array.length;i++){
+            // 如果裡面的值是一個陣列，把他放入函式裡面拆解，直到不是陣列在push 到新陣列
+            if(Array.isArray(array[i])){
+                let flat = array[i]
+                flatten(flat)
+            }else{
+                temArray.push(array[i])
+            }
+        }
+        console.log(temArray)
+    }
+    
+    flatten([1, [2, [3, [4]], 5], 6])
+
+    //請寫一個 function tree，接收一個數字 n，按照規律列印出大小為 n 的聖誕樹
+    // 為方便顯示，因此把空白代換成底線，實際請輸出空白
+    // tree(2) 預期輸出：
+    // _*
+    // ***
+    // _*
+    // _*
+    // tree(5) 預期輸出：
+    // ____*
+    // ___***
+    // __*****
+    // _*******
+    // *********
+    // ____*
+    // ____*
+    // ____*
+    // ____*
+    // ____*
+
+    //  拆兩個函式做print
+    function tree(n) {
+        printTop(n)
+        printBtm(n)
+    }
+
+    function printTop(n) {
+        for (let i =1; i<=n;i++){
+            let print='&nbsp'.repeat(n-i)+'*'.repeat(i*2-1)+'<br>'
+            info.innerHTML+= print
+        }
+    }
+    function printBtm(n) {
+        if(n === 1){ return }
+        for (var i = 1; i <= n; i++){
+            let print = '&nbsp'.repeat(n) + '* <br>'
+            info.innerHTML+= print
+        }
+    }
+    tree(5)
+
+    // 請寫出一個 function isPrime，給定一個數字 n，回傳 n 是否為質數。
+    // （質數的定義：除了 1 以外，沒辦法被所有 < n 的正整數整除）
+    // isPrime(1) 正確回傳值：false
+    // isPrime(5) 正確回傳值：true
+    // isPrime(37) 正確回傳值：true
+    
+    function isPrime(n) {
+        if(n===1){
+            return false
+        }
+        //從2 開始一個個除，但不能=n，可以除盡就不是質數
+        for (let i =2; i<n; i++){
+            if(n%i===0){
+                return false
+            }
+        }
+        // 除不盡就是質數回傳true
+        return true
+    }
+    
+    console.log(isPrime(5))
 </script>
 </body>
 </html>
