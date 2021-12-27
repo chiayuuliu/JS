@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <title>Document</title>
+</head>
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: 'Poppins';
+    }
+    body{
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        min-height: 100vh;
+        background-color: #43AFFC;
+    }
+    .wrapper{
+        width: 400px;
+        background-color: white;
+        border-radius: 10px;
+    }
+    .wrapper header{
+        color: #43AFFC;
+        font-size: 20px;
+        font-weight: 500;
+        padding: 16px 15px;
+        display: flex;
+        align-items: center;
+        border-bottom: 1px solid #bfbfbf;
+    }
+    /* 標題箭頭icon */
+    header i{
+        cursor: pointer;
+        font-size:0px;
+        margin-right: 8px;
+    }
+    .wrapper.active header i{
+        font-size: 20px;
+        margin-left:5px;
+    }
+    .wrapper .input-part{
+        /* display: none; */
+        /* 上 左右 下 */
+        margin: 20px 25px 30px;
+    }
+     /* 輸入區不顯示 */
+    .wrapper.active .input-part{
+        display: none;
+    }
+    /* 請輸入正確的城市名稱 */
+    .input-part .info-txt{
+        display: none;
+        font-size: 18px;
+        text-align: center;
+        padding: 12px 10px;
+        border-radius: 7px;
+        margin-bottom: 15px;
+    }   
+    /* 輸入錯誤時的提示字(設定顯示) */
+    .info-txt.error{
+        display: block;
+        color: #721c24;
+        background: #f8d7da;
+        border: 1px solid #f5c6cb;
+    }
+    .info-txt.pending{
+        display: block;
+        color: #0c5460;
+        background: #d1ecf1;
+        border: 1px solid #bee5eb;
+    }
+    /* 同時選曲input-part 底下的input & button */
+    .input-part :where(input,button){
+        width: 100%;
+        height: 55px;
+        border: none;
+        outline: none;
+        border-radius: 10px;
+        font-size: 18px;
+    }
+    .input-part input{
+        text-align: center;
+        border: 1px solid #bfbfbf;
+    }
+    /* 分隔線 */
+    .input-part .separator{
+        height: 1px;
+        width: 100%;
+        background-color: #ccc;
+        margin: 25px 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .separator::before{
+        content: "or";
+        color: rgb(152, 152, 152);
+        font-size: 20px;
+        padding: 0px 15px;
+        background-color: #fff;
+    }
+    .input-part button{
+        color: #fff;
+        background-color: #43AFFC;
+        cursor: pointer;
+    }
+    /* 研究 */
+    /* 被focus 的時候？有效？ */
+    .input-part input:is(:focus, :valid){
+        border: 2px solid #43AFFC;
+    }
+    /* 天氣圖 */
+    .wrapper .weather-part{
+        margin: 30px 0 0;
+        display: none;
+        justify-content: center;
+        align-items: center;
+        flex-direction: column;
+    }
+    /* 兩個classname 中間不能有空 */
+    .wrapper.active .weather-part{
+        /* 顯示 */
+        display: flex;
+    }
+    .weather-part img{
+        width: 125px;
+    }
+    .weather-part .temp{
+        display: flex;
+        font-size: 72px;
+        font-weight: 500;
+    }
+    .numb{
+        font-weight: 600;
+    }
+    /* 溫度 */
+    .temp .deg{
+        font-size: 40px;
+        /* margin: 8px 5px 0 0; */
+    }
+    /* 天氣狀況 */
+    .weather-part .weather{
+        font-size: 20px;
+        text-align: center;
+        margin: -5px 20px 15px;
+    }
+    .location{
+        font-size: 20px;
+        display: flex;
+        align-items: center;
+        font-size: 20px;
+        margin-bottom: 30px;
+    }
+    .location i{
+        font-size: 22px;
+        margin-right: 5px;
+    }
+    /* 體感溫度 */
+    .bottom-details{
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        border-top: 1px solid #bfbfbf;
+    }
+    .bottom-details .column{
+        /* background-color: #721c24; */
+        padding: 15px 0;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .column i {
+        color: #43AFFC;
+        font-size: 30px;
+        margin-right: 10px;
+    }
+    .humidity{
+        border-left: 1px solid #bfbfbf;
+    }
+    /* 體感跟濕度 */
+    .details .temp, .humidity span{
+        font-size: 18px;
+        font-weight: 500;
+        margin-top: -3px;
+    }
+    .temp .deg{
+        font-size: 17px;
+        /* 度Ｃ跟四周的距離 */
+        padding: 0px 2px 0px 1px;
+    }
+    .details p{
+        font-size: 14px;
+        margin-top: -6px;
+    }
+</style>
+<body>
+    <div class="wrapper">
+        <header><i class="fas fa-arrow-left"></i>Weather App</header>
+        <!-- 輸入區 -->
+        <section class="input-part">
+            <p class="info-txt"></p>
+            <!-- **了解這塊屬性 -->
+            <!-- 輸入城市 -->
+            <input type="text" placeholder="Enter city name" spellcheck="false" required>
+            <div class="separator"></div>
+            <!-- 按鈕 -->
+            <button>Get Device Location</button>
+        </section>
+        <section class="weather-part">
+            <!-- 氣象圖 -->
+            <img src="#" alt="Wrather Icon">
+            <!-- 溫度 -->
+            <div class="temp">
+                <span class="numb"></span>
+                <span class="deg">°</span>C
+            </div>
+            <div class="weather"></div>
+            <!-- 位置 -->
+            <div class="location">
+                <i class="fas fa-map-marker-alt"></i>
+                <span></span>
+            </div>
+            <div class="bottom-details">
+                <!-- 體感溫度 -->
+                <div class="column feels">
+                    <i class="fas fa-thermometer-three-quarters"></i>
+                    <div class="details">
+                        <div class="temp">
+                            <span class="numb-2"></span>
+                            <span class="deg">°</span>C
+                        </div>
+                        <p>feels like</p>
+                    </div>
+                </div>
+
+                <!-- 濕度 -->
+                <div class="column humidity">
+                    <i class="fas fa-tint"></i>
+                    <div class="details">
+                        <span></span>
+                        <p>Humidity</p>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+    </div>
+    <script src="./weather.js"></script>
+</body>
+</html>
