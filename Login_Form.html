@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login Form</title>
+</head>
+<style>
+    *{
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+    }
+    html, body{
+        height: 100%;
+        width: 100%;
+        display: grid;
+        place-items: center;
+        /* 如果要用left 當放方向，前面要用webkit，前面用度數就可不用加webkit */
+        /* background: -webkit-linear-gradient(left, #a445b2, #fa4299); */
+        background: linear-gradient(90deg, #a445b2, #fa4299);
+    }
+    .wrapper{
+        overflow: hidden;
+        max-width: 390px;
+        background-color: #fff;
+        padding: 30px;
+        border-radius: 5px;
+        box-shadow: 0px 15px 20px rgba(0, 0, 0, 0.1);
+    }
+    /* 文字區塊寬度設定兩倍 */
+    .wrapper .title-text{
+        display: flex;
+        width: 200%;
+        transition: .4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+    }
+    .wrapper .title-text .title{
+        width: 50%;
+        font-size: 35px;
+        font-weight: 600;
+        text-align: center;
+    }
+
+    .wrapper .form-container{
+        /* 設定100%(呈現一半的表單) */
+        width: 100%;
+        overflow: hidden;
+    }
+
+    /* 切換按鈕 */
+    .form-container .slide-controls{
+        position: relative;
+        display: flex;
+        height: 50px;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 5px;
+        margin: 30px 0 10px 0;
+        justify-content: space-between;
+        border: 1px solid lightgrey;
+    }
+    /* 標籤的字 */
+    .slide-controls .slide{
+        color: #fff;
+        height: 100%;
+        width: 100%;
+        z-index: 1;
+        font-size: 18px;
+        font-weight: 500;
+        text-align: center;
+        line-height: 48px;
+        cursor: pointer;
+        letter-spacing: 1px;
+        transition: .6s ease;
+    }
+    /* 先設定註冊的切換黑色，後面再設定checked 變白色 */
+    .slide-controls .signup{
+        color: #000;
+    }
+    .slide-controls .slide-tab{
+        /* 在切換的父層下相對定位 */
+        position: absolute;
+        /* 為了符合切換標籤的寬高 */
+        height: 100%;
+        width: 50%;
+        left: 0;
+        z-index: 0;
+        border-radius: 5px;
+        transition: .4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+        background:  -webkit-linear-gradient(left, #a445b2, #fa4299);
+    }
+
+    /* signup check 的時候，到後面是slide-tab的class name */
+    #signup:checked ~ .slide-tab{
+        left: 50%;
+    }
+    input[type="radio"]{
+        display: none;
+    }
+    /* 切換按鈕顏色 */
+    /* 如果註冊被點擊，後面註冊的字都改白色(原本上面設定是黑色) */
+    #signup:checked ~ .signup{
+        color: #fff;
+    }
+    /* 因為註冊被點擊，登入的字就要變黑色(原本設定是白色) */
+    #signup:checked ~ .login{
+        color: #000;
+    }
+    .form-container .form-inner{
+        display: flex;
+        width: 200%;
+    }
+    .form-container .form-inner form{
+        width: 50%;
+        transition: .4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+    }
+    .form-inner form .field{
+        height: 50px;
+        width: 100%;
+        margin-top: 20px;
+    }
+    .form-inner form .field input{
+        width: 100%;
+        height: 100%;
+        outline: none;
+        padding-left: 15px;
+        font-size: 18px;
+        border-radius: 5px;
+        border: 1px solid lightgrey;
+        border-bottom-width: 2px ;
+        transition: .3s ease;
+    }
+
+    .form-inner form .field input:focus{
+        border-color: #fc83bb;
+    }
+
+    .form-inner form .pass-link{
+        margin-top: 5px;
+    }
+    .form-inner form .pass-link a,
+    .form-inner form .signup-link a{
+        color: #fa4299;
+        text-decoration: none;
+    }
+
+    .form-inner form .signup-link{
+        text-align: center;
+        margin-top: 30px;
+    }
+
+    .form-inner form .pass-link a:hover,
+    .form-inner form .signup-link a:hover{
+        text-decoration: underline;
+    }
+    form .field input[type="submit"]{
+        color: #fff;
+        font-size: 20px;
+        font-weight: 500;
+        /* 因為上面有設定，這邊改回來 */
+        padding-left: 0;
+        border: none;
+        cursor: pointer;
+        background: -webkit-linear-gradient(left, #a445b2, #fa4299);
+        letter-spacing: 1px;
+    }
+</style>
+<body>
+    <div class="wrapper">
+        <div class="title-text">
+            <div class="title login">Login Form</div>
+            <div class="title signup">Signup Form</div>
+        </div>
+        <div class="form-container">
+            <div class="slide-controls">
+                <!-- 可以寫在一起，按label 就代表他選到的radio -->
+                <input type="radio" name="slider" id="login" checked>
+                <input type="radio" name="slider" id="signup" >
+                <!-- for 要寫給哪一個id -->
+                <label for="login" class="slide login">Login</label>
+                <label for="signup" class="slide signup">Signup</label>
+                <div class="slide-tab"></div>
+            </div>
+            <div class="form-inner">
+                <!-- 登入表單 -->
+                <form action="#" class="login">
+                    <div class="field">
+                        <input type="text" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="pass-link"><a href="">Forgot password?</a></div>
+                    <div class="field">
+                        <input type="submit" value="Login">
+                    </div>
+                    <div class="signup-link">Not a member ? <a href="#">Signup now</a></div>
+                </form>
+                <!-- 註冊表單 -->
+                <form action="#" class="signup">
+                    <div class="field">
+                        <input type="text" placeholder="Email Address" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Password" required>
+                    </div>
+                    <div class="field">
+                        <input type="password" placeholder="Confirm password" required>
+                    </div>
+                    <div class="field">
+                        <input type="submit" value="Signup">
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+<script>
+    const loginForm = document.querySelector("form.login");
+    const signupForm = document.querySelector("form.signup");
+    const loginBtn = document.querySelector("label.login");
+    const signupBtn = document.querySelector("label.signup");
+    const signupLink = document.querySelector(".signup-link");
+    const titleText = document.querySelector(".title-text");
+
+
+    signupBtn.onclick = (()=>{
+        loginForm.style.marginLeft = "-50%"
+        titleText.style.marginLeft="-100%"
+    })
+
+    loginBtn.onclick = (()=>{
+        titleText.style.marginLeft= "0%"
+        loginForm.style.marginLeft = "0%"
+    })
+    signupLink.onclick=(()=>{
+        signupBtn.click()
+    })
+</script>
+</body>
+</html>
