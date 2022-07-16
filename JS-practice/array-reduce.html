@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 id="info"></h2>
+    <div id="rect"></div>
+    <script>
+        const info = document.querySelector('#info');
+    
+        const ar = [2,4,6,7,5,3];
+    
+        
+        //順序都是: pre拿到第一個值:2, el拿到現在的值(第二個值:4), 索引值/陣列
+        // 累加器，要設定return 值
+        const v = ar.reduce(function(prev, el, index, array){
+            info.innerHTML += `${prev},${el}<br>`;
+            console.log(prev,el)
+            return prev + el; //return 給ar?
+        });
+        //第一次回傳2+4=6, 陣列變成[6,6,7,5,3]
+        //第二次回傳6+6=12 陣列變成[12,7,5,3]...總共執行5次
+    
+        //最後回傳24+3 回傳給v
+        console.log(v)
+        info.innerHTML += v + '<br>' ;
+    
+    </script>
+</body>
+</html>

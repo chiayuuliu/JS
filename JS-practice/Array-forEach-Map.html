@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    const ar = [
+        {name: 'david', age: 25},
+        {name: 'flora', age: 26},
+        {name: 'Carl', age: 28},
+    ];
+
+    // forEach------------
+    ar.forEach(el=>{
+        console.log(el)
+    })
+
+    // 可改寫原陣列
+    ar.forEach(function (value,index,array) {
+        // console.log(value,index,array)
+        array[index].age=value.age*2
+        console.log(value)
+    })
+
+
+    // Map----------------
+    let newAr=[]
+    newAr=ar.map(el=>{
+        console.log(el.age)
+        return el.age*2
+    })
+    // 生成新陣列(會被改寫)
+    console.log(newAr)
+    // 原陣列不會改變
+    console.log('ar',ar)
+
+
+
+</script>
+</body>
+</html>

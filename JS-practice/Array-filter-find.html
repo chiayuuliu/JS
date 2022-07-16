@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+<script>
+    const words = ["spray", "limit", "elite", "exuberant", "destruction", "present", "happy"];
+
+    // filter()會回傳所有符合條件的元素
+    // var newArray = arr.filter(callback(el,index, array))
+    let longWords = words.filter(el => el.length > 6);
+    console.log(words)
+    console.log(longWords)
+
+    //arr.find(callback[, thisArg])
+    // find() 找到第一個符合條件的元素就會停止篩選
+    const oneword = words.find(el=>el.length>5)
+    console.log('用find()方法找符合的條件',oneword)
+    
+    const ar = [
+        {name: 'david', age: 35, gender:'male'},
+        {name: 'flora', age: 26, gender:'female'},
+        {name: 'emma', age: 31, gender: 'female'},
+        {name: 'Carl',age:28, gender:'male'},
+    ];
+
+    const ar2 = ar.filter(function(el,ind,array){
+        return el.age>30
+    })
+    console.log(ar2)
+
+    // find()------------------------
+    ar.find(function(el,index,array){
+        console.log('find()方法----')
+        console.log(el.age)
+
+    })
+    const ar3=ar.find(function(el,index,array){
+       return el.age<30
+    })
+    console.log(ar3) // 只會回傳第一個符合條件的元素
+
+</script>
+</body>
+</html>

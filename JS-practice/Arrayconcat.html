@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 方法</title>
+</head>
+
+<body>
+    <h2 class="info"></h2>
+    <script>
+        const info = document.querySelector('.info')
+
+        const ar1 = [12, 'beer', true, 'cat'];
+
+        const ar2 = ['Doris', '25', 'Joanne',[123]];
+
+        const ar3 = ar1.concat(ar2)
+        console.log('ar3',typeof ar3) //obj
+        console.log(ar3)
+        info.innerHTML+= ar3 
+        //12,beer,true,cat,Doris,25,Joanne,123
+
+    </script>
+</body>
+
+</html>

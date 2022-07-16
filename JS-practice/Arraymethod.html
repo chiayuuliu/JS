@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 方法</title>
+</head>
+<body>
+    <h2 class="info" ></h2>
+<script>
+    const info = document.querySelector('.info')
+    const p1 = {name: 'David',age: 25,gender: 'male'};
+
+    const ar1 = [12, 'beer', true, 'cat'];
+    
+    ar2 = ar1.concat([1,2,3])//串接陣列
+    console.log('ar2',ar2)
+    console.log('ar1',ar1) //但原始的陣列不會改變
+
+    // 找索引值位置
+    console.log(ar1.indexOf('beer')) //beer 的位置:1
+    console.log(ar1.indexOf('beer3')) //沒有的值會是-1
+
+    console.log(ar1.includes('beer')) //beer 是否包含在陣列裡 true
+
+    const ar3 = Object.keys(p1); //取key 值
+    const ar4 = Object.values(p1); //取value 值
+ 
+
+    info.innerHTML +=`ar3 ${ar3}<br>`; // 也可以不轉換成JSON
+    info.innerHTML +=`ar3 ${JSON.stringify(ar3)}<br>`;
+    info.innerHTML +=`ar4 ${JSON.stringify(ar4)}<br>`;
+    info.innerHTML += ar3.join('---')+'<br>'; //中間用---相接
+    info.innerHTML += ar3.toString()+'<br>' //轉換成字串
+    info.innerHTML += ar1.slice(1)+'<br>' //從索引值1取值到最後
+    info.innerHTML += ar1.slice(1,3)+'<br>' //從索引值1取值到2(不包含3) 
+    
+
+    // 合併三個陣列
+    var num1 = [1, 2, 3],
+    num2 = [4, 5, 6],
+    num3 = [7, 8, 9];
+
+    var nums = num1.concat(num2, num3);
+
+    console.log(nums);
+    // 結果：[1, 2, 3, 4, 5, 6, 7, 8, 9]
+
+    // 合併巢狀陣列
+    var num1 = [[1]];
+    var num2 = [2, [3]];
+    var nums = num1.concat(num2);
+    console.log(nums);
+    // results in [[1], 2, [3]]
+
+    // 把第一個array value放入4
+    num1[0].push(4);
+
+    console.log(nums);
+    // results in [[1, 4], 2, [3]]
+
+    
+
+ 
+
+</script>
+</body>
+</html>

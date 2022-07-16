@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="btn red bold"></div>
+    <h2 id="info" ></h2>
+<script>   
+    const div = document.querySelector('div') //拿標籤
+    const info = document.querySelector('#info') //拿id
+
+    //show 出div的class name 
+    info.innerHTML += div.className + '<br>';
+
+    //將class name轉換成JSON, 會有索引值,{} 格式
+    info.innerHTML += JSON.stringify(div.classList)+'<br>';
+
+    //判斷class name red 有沒有在class list 要用contains
+    info.innerHTML += div.classList.contains('red')+'<br>';
+
+    //ar 為div classname(用陣列表示), 並用JSON的格式顯示
+    const ar = [...div.classList];
+    info.innerHTML += JSON.stringify( ar )+'<br>';
+
+    //ar[ ] 是否包含red class name,要用includes
+    info.innerHTML += ar.includes('red')+'<br>';
+
+    //console.log(div.classList) //classlist 是一個nodeList 
+    
+    for(var i=0;i<5;i++){
+            for(var j=5;j>i;j--){
+               document.writeln("&nbsp");
+            }
+            //當i=1 帶入，k<3 迴圈會跑三次
+            for(var k=0;k<2*i+1;k++){
+               document.write("*");
+            }
+            document.write("</br>")
+         }
+
+    function test(rows){
+        for(let i=0; i<rows; ++i){
+            let pyramid = '* '.repeat(i)
+            console.log(pyramid)
+        }
+    }
+
+    test(5)
+
+    function test2(rows){
+        for(let i=rows; i>=1; --i){
+            let pyramid2 = '* '.repeat(i)
+            console.log(pyramid2)
+        }
+    }
+    test2(5)
+
+
+    
+</script>
+</body>
+</html>

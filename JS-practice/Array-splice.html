@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array-splice</title>
+</head>
+<body>
+    <div class="info"></div>
+    <script>
+        const info = document.querySelector('.info')
+        // array.splice(開始索引值, 刪除的數量, 加入的值)
+        var myFish = ['angel', 'clown', 'mandarin', 'sturgeon'];
+        // 從索引 2 的位置開始，刪除 0 個元素並插入「drum」值
+        info.innerHTML += myFish.splice(2, 0, 'drum') +'myFish.splice <br>';
+        console.log(myFish)
+
+        // 顯示被取出的值
+        info.innerHTML += '被取出的值 : '+ myFish.splice(1,2)+'<br>';
+        info.innerHTML += '剩下的陣列(會被改變) : '+ myFish
+
+        // 複製出來的陣列不會被改變
+        let ar2 =[...myFish]
+
+        console.log(ar2)
+
+        const ar3 = [10, 20, 30, 40, 50];
+        // 如果沒有移除，會回傳空陣列，不會顯示內容
+        info.innerHTML += ar3.splice(1, 0,'David','aaron')+ '<br>';
+
+        info.innerHTML += ar3.splice(1, 3,'David','aaron')+ '<br>';
+        info.innerHTML += '更新後的ar3: '+ ar3+ '<br>';
+
+        
+    </script>
+</body>
+
+</html>

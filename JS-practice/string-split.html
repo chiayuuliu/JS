@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array-splice</title>
+</head>
+
+<body>
+    <div class="info"></div>
+    <script>
+        const info = document.querySelector('.info')
+        const str = 'The quick brown fox jumps over the lazy dog.'
+
+        //用空白當作切割點
+        const word = str.split(' ')
+        console.log(word)
+        console.log(typeof word) //obj
+        info.innerHTML = word[3] +`<br>` // fox 
+
+        const word2 = str.split() //沒有給就是直接接起來
+        console.log(word2)
+
+        // --------------------------------------
+        function splitString(stringToSplit, separator) {
+        var arrayOfStrings = stringToSplit.split(separator);
+
+        console.log('The original string is: "' + stringToSplit + '"');
+        console.log('The separator is: "' + separator + '"');
+        console.log("The array has " + arrayOfStrings.length + " elements: ");
+
+        for (var i=0; i < arrayOfStrings.length; i++)
+            info.innerHTML+=arrayOfStrings[i] + " / " +`<br>`
+            // console.log(arrayOfStrings[i] + " / ");
+        }
+
+        var tempestString = "Oh brave new world that has such people in it.";
+        var monthString = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec";
+
+        var space = " ";
+        var comma = ",";
+
+        splitString(tempestString, space);
+        splitString(tempestString);
+        splitString(monthString, comma);
+
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div class="info"></div>
+    <script>
+        // 用兩層迴圈的方式印金字塔
+        info=document.querySelector('.info')
+        for (var i = 0; i < 5; i++) {
+            for (var j = 5; j > i; j--) {
+                document.writeln("&nbsp");
+            }
+            //當i=1 帶入，k<3 迴圈會跑三次
+            for (var k = 0; k < 2 * i + 1; k++) {
+                document.writeln("*");
+            }
+            document.writeln("</br>")
+        }
+
+
+        // repeat() 方式印一半三角形
+        for (let i = 0; i <= 5; ++i) {
+            let print = '* '.repeat(i)
+            info.innerHTML+= print +'<br>'
+            console.log(print)
+        }
+
+        for (let i = 4; i >= 1; --i) {
+            let pyramid2 = '* '.repeat(i)
+            info.innerHTML+= pyramid2 +'<br>'
+            console.log(pyramid2)
+        }
+
+        
+    </script>
+</body>
+
+</html>

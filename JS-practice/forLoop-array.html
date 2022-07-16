@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="answer"></div>
+
+    <script>
+        var scores = [24, 32, 17];      // Array of scores
+        var arrayLength = scores.length;// Items in array
+        var roundNumber = 0;            // Current round
+        var msg = '';                   // Message
+
+        // Loop through the items in the array
+        for (var i = 0; i < arrayLength; i++) {
+
+            // Arrays are zero based (so 0 is round 1)
+            // Add 1 to the current round
+            roundNumber = (i + 1);
+            
+            // 現在第幾round
+            msg += 'Round ' + roundNumber + ': ';
+
+            // 從陣列裡一一取出數字
+            msg += scores[i] + '<br />';
+        }
+
+        document.getElementById('answer').innerHTML = msg;
+    </script>
+</body>
+
+</html>

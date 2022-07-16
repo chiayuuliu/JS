@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while loop</title>
+</head>
+<body>
+
+    <div id="answer"></div>
+<script>
+    var i = 1;       // Set counter to 1
+    var msg = '';    // Message
+    var msg2 = '';    // Message
+
+
+    // 當i < 10 就一直往下做
+    while (i < 10) {
+        msg += `${i} x 5 = ${i * 5} <br />`;
+        msg2 += i +'<br>'
+        i++;
+    }
+
+    document.getElementById('answer').innerHTML = msg2;
+    document.getElementById('answer').innerHTML += msg;
+
+</script>
+</body>
+</html>

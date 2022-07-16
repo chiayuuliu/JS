@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>選取器</title>
+</head>
+
+<body>
+    <!-- info會自動變成window的屬性 (window.info)-->
+<div id="info">123</div>
+<div id="info">456</div>
+<div class="rect">Doris</div>
+<div class="rect">789</div>
+
+    <script>
+        // 標準作法:
+        let info = document.getElementById('info');
+        //info會自動變成window的屬性
+        console.log(info);
+        info.innerHTML = '<h2>Hello~<h2>'; 
+        //把裡面的內容作更換, id只能有一個, 如果有兩個會沒有效果
+
+        console.log( document.getElementsByClassName('rect'));
+        console.log( document.getElementsByTagName('div'));
+
+</script>
+</body>
+</html>

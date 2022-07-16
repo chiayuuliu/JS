@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //以下語法都會改變原本的陣列
+    ar=[ 1,2,3,4,5]
+    // ar.push(12)
+    // ar.pop()
+    // ar.shift()
+    // ar.unshift(30)
+
+    // console.log(ar)
+    ar.sort()
+    // console.log(ar)
+
+    // 第一個值(1)會給b 第二個值(2)給a
+    ar.sort(function(a,b){
+        // console.log(a,b)
+        // >=0 不對調，<0 對調，也可直接帶ab 做計算
+        // return 1
+        // console.log(a-b)
+        return b-a
+
+    })
+    // console.log('1',ar)
+
+    // 最後40 跟 200 比 40 會給b，前面的值會給b
+    var numberArray = [40, 1, 5, 200];
+    function compareNumbers(a, b) {
+        // console.log('a:',a ,'b:',b)
+        // console.log(a-b)
+        // console.log('-----')
+
+        return a-b;
+        
+    }
+    console.log('Sorted with compareNumbers:', numberArray.sort(compareNumbers));
+
+
+    let newAr = ar.filter((v)=>{
+        return(v!==2&&v!==5)
+    })
+    console.log('newAr',newAr.sort((a,b)=>{
+        console.log(a,b)
+        return 1
+    }))
+
+
+</script>
+</body>
+</html>

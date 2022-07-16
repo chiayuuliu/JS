@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Array 方法</title>
+</head>
+
+<body>
+    <h2 class="info"></h2>
+    <script>
+        const info = document.querySelector('.info')
+        const p1 = { name: 'David', age: 25, gender: 'male' };
+
+        const ar1 = [12, 'beer', true, 'cat'];
+
+        //console.log(ar1.includes('beer')) //beer 是否包含在陣列裡 true
+
+        const ar2 = [1,2,3,4 ]
+        console.log(ar2.includes(2));     // true
+        console.log(ar2.includes(5));    // false
+        console.log(ar2.includes(4,4));  // false(從index 4 /第五個開始找)
+        console.log(ar2.includes(3, -2)) // 如果index 值為負數，會由ar.length + (-2)=2(index 2)做搜尋
+
+        //[1, 2, 3].includes(3, -1); // true
+        //[1, 2, NaN].includes(NaN); // true
+
+        // slice 
+        console.log(ar1.slice(1)) // 從index 1 開始取值到最後
+        console.log(ar1) // 原本的陣列不會改變
+
+        info.innerHTML+= `ar1: ${JSON.stringify(ar1)}<br>`;
+        info.innerHTML+= `ar1.slice(1): ${JSON.stringify(ar1.slice(1))}<br>`;
+
+
+
+
+    </script>
+</body>
+
+</html>

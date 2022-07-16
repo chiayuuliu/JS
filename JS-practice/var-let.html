@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id="info">123</div>
+
+<script>
+            
+    let c;
+    console.log('a',a);  //先使用才用var宣告, 會跳undefined
+    //console.log('b',b) //先用才用let宣告, 會跳讀不到值=ReferenceError
+    console.log(c)
+
+
+    var a = 10; //宣告提升, 會把var a 提升, 但不會把a=10提前, 所以會出現undefined, 宣告跟設定值是兩件事
+    let b = 20; //但用let 宣告, 不會宣告提升, 會跳錯誤
+    //宣告後都會給預設值undefined 
+
+    function Doris(){
+        var abc = 12 
+        var abc = 2 
+        console.log('裡面',abc)
+
+        // 只在裡面宣告外面讀不到
+    }
+    // var abc = 12 
+    // console.log(abc)
+    Doris()
+
+</script>
+</body>
+</html>

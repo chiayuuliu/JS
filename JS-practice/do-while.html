@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>while loop</title>
+</head>
+
+<body>
+
+<div id="answer"></div>
+
+<script>
+    var i = 1;       // Set counter to 1
+    var msg = '';    // Message
+
+    // Store 5 times table in a variable
+    do {
+        msg += i + ' x 5 = ' + (i * 5) + '<br />';
+        console.log(i)
+        i++;
+    } while (i < 1); 
+    // Note how this is already 1 and it still runs
+
+    document.getElementById('answer').innerHTML = msg;
+</script>
+
+</body>
+
+</html>

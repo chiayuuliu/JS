@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .box{
+        width: 500px;
+        height: 500px;
+        background-color: bisque;
+        font-size: 100px;
+    }
+    .red{
+        background-color: brown;
+    }
+    .white{
+        color: white;
+    }
+</style>
+<body>
+    <div class="box red white">
+        test
+    </div>
+    <button>change</button>
+<script>
+    const btn = document.querySelector('button'),
+    box = document.querySelector('.box')
+    btn.addEventListener('click', ()=>{
+        // 可以同時移除兩個classname
+        // 用white 取代red
+        // box.classList.replace('red', 'white')
+        box.classList.remove('red', 'white')
+    })
+
+</script>
+</body>
+</html>
