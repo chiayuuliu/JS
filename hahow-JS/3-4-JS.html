@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      for (var i = 0; i < 5; i++) {
+        // console.log(i);
+      }
+      //   console.log(i);
+
+      var books_all = [
+        {
+          name: "飢餓遊戲",
+          price: 350,
+        },
+        {
+          name: "星火燎原",
+          price: 400,
+        },
+        {
+          name: "自由幻夢",
+          price: 380,
+        },
+      ];
+
+      const people = [
+        {
+          name: "劉",
+          male: true,
+        },
+        {
+          name: "張",
+          male: false,
+        },
+        {
+          name: "林",
+          male: false,
+        },
+      ];
+      var newpeople = [];
+      for (var i = 0; i < people.length; i++) {
+        if (people[i].male) {
+          newpeople[i] = people[i].name + "先生";
+        } else {
+          newpeople[i] = people[i].name + "小姐";
+        }
+      }
+      console.log(newpeople);
+      //   陣列轉換成字串
+      const peopleStr = newpeople.join("/");
+      console.log(peopleStr);
+
+      //   字串轉換成ar
+      const peopleAr = peopleStr.split("/")
+      console.log(peopleAr)
+      
+    </script>
+  </body>
+</html>
